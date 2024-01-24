@@ -18,7 +18,7 @@
 #          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
 name: Glcortex workflow using Snyk
-on: push
+on: [ workflow_dispatch]
 jobs:
   security:
     runs-on: ubuntu-latest
