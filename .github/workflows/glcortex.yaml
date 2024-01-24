@@ -1,7 +1,7 @@
 name: Glcortex workflow using Snyk and Zap (SCA e DAST)
 on: [ workflow_dispatch, push, pull_request]
 jobs:
-  devsecops:
+  snyks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
