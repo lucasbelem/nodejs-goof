@@ -1,26 +1,7 @@
-#name: glcortex-devsecops
-#run-name: ${{ github.actor }} is learning GitHub Actions
-#on: [push]
-#jobs:
-#  info:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - run: uname -a
-#      - run: id
-#      - run: env
-#  security:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@master
-#      - name: Run Snyk to check for vulnerabilities
-#        uses: snyk/actions/node@master
-#        env:
-#          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-
-name: Glcortex workflow using Snyk
-on: [ workflow_dispatch]
+name: Glcortex workflow using Snyk and Zap (SCA e DAST)
+on: [ workflow_dispatch, push, pull_request]
 jobs:
-  security:
+  devsecops:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -30,3 +11,7 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with: #envia para o snyk dashboard / equivalente a publicacao de resultado
           command: monitor
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.10.0
+        with:
+          target: 'https://owasp.org/www-project-juice-shop/'          
