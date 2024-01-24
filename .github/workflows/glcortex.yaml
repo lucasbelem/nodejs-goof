@@ -28,3 +28,5 @@ jobs:
         uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with: #envia para o snyk dashboard / equivalente a publicacao de resultado
+          command: monitor
