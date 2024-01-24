@@ -11,6 +11,9 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with: #envia para o snyk dashboard / equivalente a publicacao de resultado
           command: monitor
+  zap:
+      runs-on: ubuntu-latest
+      steps:
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.10.0
         with:
