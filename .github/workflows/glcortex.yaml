@@ -17,7 +17,7 @@
 #        env:
 #          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
-name: Glcorytex workflow using Snyk
+name: Glcortex workflow using Snyk
 on: push
 jobs:
   security:
